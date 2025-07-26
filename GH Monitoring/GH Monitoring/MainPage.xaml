@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GH_Monitoring"
+             x:Class="GH_Monitoring.MainPage"
+             BackgroundColor="#121212"
+>
+    <!-- Scrollable Content -->
+    <ScrollView Orientation="Vertical">
+        <ScrollView Orientation="Horizontal">
+
+            <StackLayout Padding="20" Spacing="20">
+
+                <!-- Header -->
+                <Frame BackgroundColor="#1E1E1E" Padding="20" CornerRadius="10" HasShadow="True">
+                    <Label Text="Greenhouse Monitoring" 
+                           HorizontalTextAlignment="Center" 
+                           TextColor="#00E676" 
+                           FontSize="24" 
+                           FontAttributes="Bold"/>
+                </Frame>
+                <Frame BackgroundColor="#1E1E1E" Padding="20" CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <Button Text="Access Bluetooth Device" 
+                            BackgroundColor="#00E676" 
+                            TextColor="White" 
+                            Command="{Binding NavigateToBluetoothPageCommand}" />
+                    </StackLayout>
+                </Frame>
+
+                <!-- Floating Panel for Plant Selection -->
+                <Frame BackgroundColor="#333333" Padding="10" CornerRadius="20" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Select Plant to Monitor" 
+                               TextColor="White" 
+                               FontSize="16" 
+                               FontAttributes="Bold" />
+                        <Picker x:Name="plantPicker" TextColor="White" Title="Select Plant"
+                                SelectedItem="{Binding SelectedPlant}">
+                            <Picker.Items>
+                                <x:String>Tomato 1 (Pot A)</x:String>
+                                <x:String>Tomato 2 (Pot A)</x:String>
+                                <x:String>Tomato 3 (Pot A)</x:String>
+                                <x:String>Okra 1 (Pot B)</x:String>
+                                <x:String>Okra 2 (Pot B)</x:String>
+                                <x:String>Okra 3 (Pot B)</x:String>
+                                <x:String>Lettuce 1 (Pot C)</x:String>
+                                <x:String>Lettuce 2 (Pot C)</x:String>
+                                <x:String>Lettuce 3 (Pot C)</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Manual Control Buttons Section -->
+                <Frame BackgroundColor="#1E1E1E" Padding="10" CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Manual Controls" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+
+                        <!-- Centered Buttons -->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+                            <Button Text="{Binding MistingButtonText}" 
+                                    FontSize="12"
+                                    BackgroundColor="#333333" 
+                                    TextColor="White" 
+                                    BorderColor="#00E676" 
+                                    BorderWidth="2" 
+                                    CornerRadius="15" 
+                                    WidthRequest="100" 
+                                    HeightRequest="40" 
+                                    Command="{Binding ToggleMistingCommand}" />
+
+                            <Button Text="{Binding FanButtonText}" 
+                                    FontSize="12"
+                                    BackgroundColor="#333333" 
+                                    TextColor="White" 
+                                    BorderColor="#00E676" 
+                                    BorderWidth="2" 
+                                    CornerRadius="15" 
+                                    WidthRequest="100" 
+                                    HeightRequest="40" 
+                                    Command="{Binding ToggleFanCommand}" />
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Temperature Section -->
+                <Frame BackgroundColor="#1E1E1E" Padding="10" CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Temperature" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                        <Label Text="{Binding Temperature}" FontSize="16" TextColor="#00E676"/>
+                        <Label Text="Realtime Temperature Graph:" FontSize="16" TextColor="White" />
+                        <Image Source="https://s-ink.org/wp-content/uploads/Annual-Global-Temperature-Anomaly-Fabio-Crameri-vik.png" HeightRequest="150"/>
+                        <Label Text="(This will be replaced with an actual realtime graph)" FontSize="12" TextColor="Gray" />
+                    </StackLayout>
+                </Frame>
+
+                <!-- Humidity Section -->
+                <Frame BackgroundColor="#1E1E1E" Padding="10" CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Humidity" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                        <Label Text="{Binding Humidity}" FontSize="16" TextColor="#00E676"/>
+                        <Label Text="Realtime Humidity Graph:" FontSize="16" TextColor="White" />
+                        <Image Source="https://s-ink.org/wp-content/uploads/Annual-Global-Temperature-Anomaly-Fabio-Crameri-vik.png" HeightRequest="150"/>
+                        <Label Text="(This will be replaced with an actual realtime graph)" FontSize="12" TextColor="Gray" />
+                    </StackLayout>
+                </Frame>
+
+                <!-- Soil Moisture Section -->
+                <Frame BackgroundColor="#1E1E1E" Padding="10" CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Soil Moisture" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                        <Label Text="{Binding SoilMoisture}" FontSize="16" TextColor="#00E676"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Water Level Section -->
+                <Frame BackgroundColor="#1E1E1E" Padding="10" CornerRadius="10" HasShadow="True">
+                    <StackLayout>
+                        <Label Text="Water Container Level" FontSize="20" FontAttributes="Bold" TextColor="White"/>
+                        <Label Text="{Binding WaterLevel}" FontSize="16" TextColor="#00E676"/>
+                        <ProgressBar Progress="{Binding WaterLevelProgress}" HeightRequest="20" />
+                    </StackLayout>
+                </Frame>
+
+            </StackLayout>
+        </ScrollView>
+    </ScrollView>
+
+</ContentPage>

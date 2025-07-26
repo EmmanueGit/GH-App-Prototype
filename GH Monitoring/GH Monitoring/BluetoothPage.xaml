@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GH_Monitoring"
+             x:Class="GH_Monitoring.BluetoothPage"
+             Title="Bluetooth Devices">
+
+    <StackLayout Padding="10">
+        <!-- Device List -->
+        <Label Text="Available Devices" FontSize="Large" HorizontalOptions="Center" />
+
+        <ListView x:Name="DeviceListView" 
+                  ItemsSource="{Binding Devices}" 
+                  SelectedItem="{Binding SelectedDevice}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Connect and Disconnect Buttons -->
+        <Button Text="Connect" 
+                Command="{Binding ConnectCommand}"
+                BackgroundColor="Green" 
+                TextColor="White" 
+                HorizontalOptions="Center" />
+
+        <Button Text="Disconnect" 
+                Command="{Binding DisconnectCommand}"
+                BackgroundColor="Red" 
+                TextColor="White" 
+                HorizontalOptions="Center" />
+
+        <!-- Status Display -->
+        <Label Text="Status:" FontSize="Medium" HorizontalOptions="Center" />
+        <Label Text="{Binding ConnectionStatus}" 
+               FontSize="Large" 
+               TextColor="DarkBlue" 
+               HorizontalOptions="Center" />
+
+        <!-- Device Response Display -->
+        <Label Text="Device Response:" FontSize="Medium" HorizontalOptions="Center" />
+        <Label Text="{Binding DeviceResponse}" 
+               FontSize="Large" 
+               TextColor="DarkGreen" 
+               HorizontalOptions="Center" />
+    </StackLayout>
+
+</ContentPage>
